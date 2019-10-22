@@ -1,4 +1,4 @@
 TARGET  := accessws.exe
 INCS = -I ../network -I ../utils
-LIBS = -L ../utils -lutils -L ../network -lnetwork -Wl,-Bstatic -lev -ljansson -lmpdec -lrdkafka -lz -lcurl -lssl -lcrypto -lhiredis -Wl,-Bdynamic -lm -lpthread -ldl -llz4
+LIBS = -L ../utils -lutils -L ../network -lnetwork -Wl,-Bstatic -ljansson -lmpdec -lrdkafka -lz -lcurl -lssl -lcrypto -lhiredis -Wl,-Bdynamic -lm -lpthread -ldl -llz4 -lev
 include ../makefile.inc

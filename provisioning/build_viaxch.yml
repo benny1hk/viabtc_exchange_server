@@ -5,8 +5,16 @@
     name: ['build-essential', 'libev-dev', 'libmpdec-dev', 'libjansson-dev', 'libssl-dev', 'liblz4-dev', 'libcurl3']
 
 # install specific version of libmysqlclient-dev so we dont clash with libssl-dev
+# fix multiple definition of `ERR_remove_thread_state' (https://stackoverflow.com/questions/51645217/openssl-libcrypto-a-and-libmysqlclient-a-on-multiple-definition-of-err-remove-t)
 - name: install specific version of libmysqlclient-dev
   shell: apt install -y --allow-downgrades libmysqlclient20=5.7.11-0ubuntu6 libmysqlclient-dev=5.7.11-0ubuntu6
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16"
+
+# install specific version of libmysqlclient-dev so we dont clash with libssl-dev
+# fix multiple definition of `ERR_remove_thread_state' (https://stackoverflow.com/questions/51645217/openssl-libcrypto-a-and-libmysqlclient-a-on-multiple-definition-of-err-remove-t)
+- name: install specific version of libmysqlclient-dev
+  shell: apt install -y --allow-downgrades libmysqlclient20=5.7.21-1ubuntu1 libmysqlclient-dev=5.7.21-1ubuntu1
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "18"
 
 # ubuntu does not have a recent enough version of librdkafka
 - name: download librdkafka
