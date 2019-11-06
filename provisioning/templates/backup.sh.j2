@@ -82,7 +82,7 @@ then
     # Dump the databases
     #
     for database in ${DATABASES[@]}; do
-      mysqldump $database > $WORKING_DIR/$database.sql
+      mysqldump $database > $WORKING_DIR/$database.sql || echo "WARNING: 'mysqldump $daatabase' failed!!!"
     done
 
     # Send them to b2
