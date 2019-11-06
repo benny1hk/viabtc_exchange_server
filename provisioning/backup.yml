@@ -47,7 +47,7 @@
       shell: mkdir -p /opt/backup
 
     - name: create backup name
-      shell: "echo '{{ ansible_date_time.date }}_{{ansible_hostname}}' > /opt/backup/backup_name"
+      shell: "echo '{{ ansible_date_time.date }}_{{ansible_fqdn}}' > /opt/backup/backup_name"
       args:
          creates: /opt/backup/backup_name
 
